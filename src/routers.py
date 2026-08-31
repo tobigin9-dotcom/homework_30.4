@@ -8,7 +8,6 @@ from database import get_db
 from models import Recipe
 from schemas import RecipeCreate, RecipeDetail, RecipeListItem
 
-
 router = APIRouter(
     prefix="/recipes",
     tags=["Recipes"],
