@@ -36,9 +36,7 @@ class RecipeCreate(BaseModel):
         ...,
         min_length=1,
         description="Текстовое описание рецепта.",
-        examples=[
-            "Нарезать картофель, добавить курицу и запекать 60 минут."
-        ],
+        examples=["Нарезать картофель, добавить курицу и запекать 60 минут."],
     )
 
 
@@ -101,9 +99,7 @@ class RecipeDetail(BaseModel):
 
     description: str = Field(
         description="Описание приготовления блюда.",
-        examples=[
-            "Нарезать картофель, добавить курицу и запекать 60 минут."
-        ],
+        examples=["Нарезать картофель, добавить курицу и запекать 60 минут."],
     )
 
     views: int = Field(
