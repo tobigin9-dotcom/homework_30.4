@@ -52,8 +52,9 @@ async def get_recipes(
     )
 
     result = await db.execute(query)
+    recipes = result.scalars().all()
 
-    return list(result.scalars().all())
+    return [RecipeListItem.model_validate(recipe) for recipe in recipes]
 
 
 @router.get(
