@@ -43,12 +43,9 @@ async def get_recipes(
         Список рецептов для таблицы фронтенда.
     """
 
-    query = (
-        select(Recipe)
-        .order_by(
-            Recipe.views.desc(),
-            Recipe.cooking_time.asc(),
-        )
+    query = select(Recipe).order_by(
+        Recipe.views.desc(),
+        Recipe.cooking_time.asc(),
     )
 
     result = await db.execute(query)
@@ -97,9 +94,7 @@ async def get_recipe(
         HTTPException: Если рецепт отсутствует.
     """
 
-    result = await db.execute(
-        select(Recipe).where(Recipe.id == recipe_id)
-    )
+    result = await db.execute(select(Recipe).where(Recipe.id == recipe_id))
 
     recipe = result.scalar_one_or_none()
 
@@ -129,10 +124,7 @@ async def get_recipe(
     response_model=RecipeDetail,
     status_code=status.HTTP_201_CREATED,
     summary="Создать рецепт",
-    description=(
-        "Создаёт новый рецепт. "
-        "Новый рецепт получает 0 просмотров."
-    ),
+    description=("Создаёт новый рецепт. " "Новый рецепт получает 0 просмотров."),
     responses={
         201: {
             "description": "Рецепт успешно создан",
